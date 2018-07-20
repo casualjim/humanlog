@@ -22,18 +22,18 @@ var DefaultOptions = &HandlerOptions{
 	TruncateLength: 15,
 	TimeFormat:     time.Stamp,
 
-	KeyColor:          color.New(color.FgGreen),
-	ValColor:          color.New(color.FgHiWhite),
-	TimeColor:         color.New(color.FgBlack),
-	MsgColor:          color.New(color.FgBlack),
-	MsgAbsentColor:    color.New(color.FgWhite),
-	DebugLevelColor:   color.New(color.FgMagenta),
-	InfoLevelColor:    color.New(color.FgCyan),
+	KeyColor:          color.New(color.FgYellow),
+	ValColor:          color.New(color.FgHiBlue),
+	TimeColor:         color.New(color.Reset),
+	MsgColor:          color.New(color.Reset),
+	MsgAbsentColor:    color.New(color.FgHiBlack),
+	DebugLevelColor:   color.New(color.FgCyan),
+	InfoLevelColor:    color.New(color.FgGreen),
 	WarnLevelColor:    color.New(color.FgYellow),
 	ErrorLevelColor:   color.New(color.FgRed),
-	PanicLevelColor:   color.New(color.BgRed),
+	PanicLevelColor:   color.New(color.BgRed, color.FgWhite),
 	FatalLevelColor:   color.New(color.BgHiRed, color.FgHiWhite),
-	UnknownLevelColor: color.New(color.FgMagenta),
+	UnknownLevelColor: color.New(color.FgHiBlack),
 }
 
 type HandlerOptions struct {
