@@ -60,7 +60,11 @@ func (h *JSONHandler) clear() {
 
 // TryHandle tells if this line was handled by this handler.
 func (h *JSONHandler) TryHandle(d []byte) bool {
-	if !h.UnmarshalJSON(d) {
+	if !bytes.Contains(d, []byte(`"time":`)) && !bytes.Contains(d, []byte(`"ts":`)) && !bytes.Contains(d, []byte(`"timestamp":`)) {
+		return false
+	}
+	err := h.UnmarshalJSON(d)
+	if err != nil {
 		h.clear()
 		return false
 	}
@@ -78,8 +82,12 @@ func (h *JSONHandler) UnmarshalJSON(data []byte) bool {
 	checkEachUntilFound(supportedTimeFields, func(field string) bool {
 		time, ok := tryParseTime(raw[field])
 		if ok {
-			h.Time = time
-			delete(raw, field)
+			delete(raw, "ts")
+		} else {
+			time, ok = raw["timestamp"]
+			if ok {
+				delete(raw, "timestamp")
+			}
 		}
 		return ok
 	})
