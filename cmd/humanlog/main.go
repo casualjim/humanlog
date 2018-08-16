@@ -120,7 +120,7 @@ func newApp() *cli.App {
 			signal.Ignore(os.Interrupt)
 		}
 
-		log.Print("reading stdin...")
+		// log.Print("reading stdin...")
 		if err := humanlog.Scanner(os.Stdin, colorable.NewColorableStdout(), opts); err != nil {
 			log.Fatalf("scanning caught an error: %v", err)
 		}

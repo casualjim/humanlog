@@ -42,7 +42,7 @@ func (h *JSONHandler) clear() {
 
 // TryHandle tells if this line was handled by this handler.
 func (h *JSONHandler) TryHandle(d []byte) bool {
-	if !bytes.Contains(d, []byte(`"time":`)) && !bytes.Contains(d, []byte(`"ts":`)) {
+	if !bytes.Contains(d, []byte(`"time":`)) && !bytes.Contains(d, []byte(`"ts":`)) && !bytes.Contains(d, []byte(`"timestamp":`)) {
 		return false
 	}
 	err := h.UnmarshalJSON(d)
@@ -68,6 +68,11 @@ func (h *JSONHandler) UnmarshalJSON(data []byte) error {
 		time, ok = raw["ts"]
 		if ok {
 			delete(raw, "ts")
+		} else {
+			time, ok = raw["timestamp"]
+			if ok {
+				delete(raw, "timestamp")
+			}
 		}
 	}
 	if ok {
