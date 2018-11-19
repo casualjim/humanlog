@@ -40,9 +40,20 @@ func (h *JSONHandler) clear() {
 	}
 }
 
+var fieldnames = []string{"time", "ts", "timestamp", "level", "lvl", "message", "msg"}
+
+func hasKnownField(b []byte) bool {
+	for _, v := range fieldnames {
+		if bytes.Contains(b, []byte(fmt.Sprintf("%q:", v))) {
+			return true
+		}
+	}
+	return false
+}
+
 // TryHandle tells if this line was handled by this handler.
 func (h *JSONHandler) TryHandle(d []byte) bool {
-	if !bytes.Contains(d, []byte(`"time":`)) && !bytes.Contains(d, []byte(`"ts":`)) && !bytes.Contains(d, []byte(`"timestamp":`)) {
+	if !hasKnownField(d) {
 		return false
 	}
 	err := h.UnmarshalJSON(d)
