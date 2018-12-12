@@ -212,12 +212,21 @@ func (h *JSONHandler) Prettify(skipUnchanged bool) []byte {
 	} else {
 		timeColor = h.Opts.TimeDarkBgColor
 	}
+
+	const straceField = "stacktrace"
+	stacktrace := h.Fields[straceField]
+	delete(h.Fields, straceField)
 	_, _ = fmt.Fprintf(h.out, "%s |%s| %s\t %s",
 		timeColor.Sprint(h.Time.Format(h.Opts.TimeFormat)),
 		level,
 		msg,
 		strings.Join(h.joinKVs(skipUnchanged, "="), "\t "),
 	)
+	if stacktrace != "" {
+		var str string
+		json.Unmarshal([]byte(stacktrace), &str)
+		_, _ = fmt.Fprintf(h.out, "\n%s", str)
+	}
 
 	_ = h.out.Flush()
 
