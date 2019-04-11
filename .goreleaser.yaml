@@ -6,6 +6,10 @@ release:
   name_template: '{{.Tag}}'
 brew:
   name: humanlog
+  github:
+    owner: oneconcern
+    name: homebrew-tap
+  download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
   commit_author:
     name: engineering
     email: engineering@oneconcern.com
@@ -42,7 +46,7 @@ archive:
     darwin: Darwin
     linux: Linux
     windows: Windows
-  format: tar.gz
+  format: binary
   files:
   - licence*
   - LICENCE*
