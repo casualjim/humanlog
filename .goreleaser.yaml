@@ -32,7 +32,7 @@ builds:
   - darwin_amd64
   main: ./cmd/humanlog/main.go
   ldflags:
-  - -s -w 
+  - -s -w -X main.build={{.Version}}
   binary: humanlog
   env:
   - CGO_ENABLED=0
