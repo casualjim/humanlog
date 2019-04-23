@@ -4,17 +4,17 @@ Read logs from `stdin` and prints them back to `stdout`, but prettier.
 
 # Using it
 
-[Grab a release](https://github.com/aybabtme/humanlog/releases) or :
+[Grab a release](https://github.com/casualjim/humanlog/releases) or :
 
 ## With Go installed
 ```bash
-$ go get -u github.com/aybabtme/humanlog/...
+$ go get -u github.com/casualjim/humanlog/...
 ```
 
 ## On linux
 
 ```bash
-wget -qO- https://github.com/aybabtme/humanlog/releases/download/0.2.1/humanlog_Linux_x86_64.tar.gz | tar xvz
+wget -qO- https://github.com/casualjim/humanlog/releases/download/0.2.1/humanlog_Linux_x86_64.tar.gz | tar xvz
 ```
 
 ## On OS X

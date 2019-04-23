@@ -5,7 +5,7 @@ import (
 	"bytes"
 	"io"
 
-	"github.com/aybabtme/humanlog/parser/logfmt"
+	"github.com/casualjim/humanlog/parser/logfmt"
 )
 
 var (
