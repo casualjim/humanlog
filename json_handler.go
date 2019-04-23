@@ -71,11 +71,7 @@ func hasKnownField(b []byte) bool {
 
 // TryHandle tells if this line was handled by this handler.
 func (h *JSONHandler) TryHandle(d []byte) bool {
-	if !hasKnownField(d) {
-		return false
-	}
-	err := h.UnmarshalJSON(d)
-	if err != nil {
+	if !h.UnmarshalJSON(d) {
 		h.clear()
 		return false
 	}
@@ -93,12 +89,8 @@ func (h *JSONHandler) UnmarshalJSON(data []byte) bool {
 	checkEachUntilFound(supportedTimeFields, func(field string) bool {
 		time, ok := tryParseTime(raw[field])
 		if ok {
-			delete(raw, "ts")
-		} else {
-			time, ok = raw["timestamp"]
-			if ok {
-				delete(raw, "timestamp")
-			}
+			h.Time = time
+			delete(raw, field)
 		}
 		return ok
 	})

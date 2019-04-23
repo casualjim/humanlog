@@ -4,11 +4,11 @@ Read logs from `stdin` and prints them back to `stdout`, but prettier.
 
 # Using it
 
-[Grab a release](https://github.com/aybabtme/humanlog/releases) or :
+[Grab a release](https://github.com/casualjim/humanlog/releases) or :
 
 ## With Go installed
 ```bash
-$ go get -u github.com/aybabtme/humanlog/...
+$ go get -u github.com/casualjim/humanlog/...
 ```
 
 ## On linux

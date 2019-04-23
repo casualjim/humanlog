@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"strings"
 
-	"github.com/aybabtme/humanlog"
+	"github.com/casualjim/humanlog"
 	"github.com/aybabtme/rgbterm"
 	"github.com/mattn/go-colorable"
 	"github.com/urfave/cli"
