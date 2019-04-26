@@ -6,8 +6,8 @@ import (
 	"os/signal"
 	"strings"
 
-	"github.com/casualjim/humanlog"
 	"github.com/aybabtme/rgbterm"
+	"github.com/casualjim/humanlog"
 	"github.com/mattn/go-colorable"
 	"github.com/urfave/cli"
 )
@@ -73,8 +73,9 @@ func newApp() *cli.App {
 	}
 
 	lightBg := cli.BoolFlag{
-		Name:  "light-bg",
-		Usage: "use black as the base foreground color (for terminals with light backgrounds)",
+		Name:   "light-bg",
+		Usage:  "use black as the base foreground color (for terminals with light backgrounds)",
+		EnvVar: "HUMANLOG_LIGHT_BACKGROUND",
 	}
 
 	timeFormat := cli.StringFlag{
