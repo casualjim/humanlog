@@ -154,8 +154,6 @@ func (h *JSONHandler) Prettify(skipUnchanged bool) []byte {
 		msgColor = h.Opts.MsgDarkBgColor
 		msgAbsentColor = h.Opts.MsgAbsentDarkBgColor
 	}
-	msgColor = color.New(color.FgHiWhite)
-	msgAbsentColor = color.New(color.FgHiWhite)
 
 	var msg string
 	if h.Message == "" {
