@@ -40,7 +40,7 @@ func (h *JSONHandler) clear() {
 	}
 }
 
-var fieldnames = []string{"time", "ts", "timestamp", "level", "lvl", "message", "msg"}
+var fieldnames = []string{"time", "timestamp", "ts", "level", "lvl", "message", "msg"}
 
 func hasKnownField(b []byte) bool {
 	for _, v := range fieldnames {
@@ -186,9 +186,19 @@ func (h *JSONHandler) Prettify(skipUnchanged bool) []byte {
 		timeColor = h.Opts.TimeDarkBgColor
 	}
 
+
+	const verboseErrField = "errorVerbose"
+	stacktrace := h.Fields[verboseErrField]
+	delete(h.Fields, verboseErrField)
+	
 	const straceField = "stacktrace"
-	stacktrace := h.Fields[straceField]
+	strace := h.Fields[straceField]
 	delete(h.Fields, straceField)
+		
+	if stacktrace == "" && strace != "" {
+		stacktrace = strace
+	}
+
 	_, _ = fmt.Fprintf(h.out, "%s |%s| %s\t %s",
 		timeColor.Sprint(h.Time.Format(h.Opts.TimeFormat)),
 		level,
