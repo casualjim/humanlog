@@ -14,4 +14,5 @@ github.com/mattn/go-isatty v0.0.4 h1:bnP0vzxcAdeI1zdubAl5PjU6zsERjGZb7raWodagDYs
 github.com/mattn/go-isatty v0.0.4/go.mod h1:M+lRXTBqGeGNdLjl/ufCoiOlB5xdOkqRJdNxMWT7Zi4=
 github.com/urfave/cli v1.20.1-0.20180226030253-8e01ec4cd3e2 h1:xAkHCttGHKXIr10OSiFzNt0XOJyHMdng0ylSynT8sMo=
 github.com/urfave/cli v1.20.1-0.20180226030253-8e01ec4cd3e2/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
+golang.org/x/sys v0.0.0-20170407050850-f3918c30c5c2 h1:niKkabq6kYToDafvvFw9MeTkT4ifSvpOCRP6pFxOCZE=
 golang.org/x/sys v0.0.0-20170407050850-f3918c30c5c2/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
