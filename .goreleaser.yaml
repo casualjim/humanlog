@@ -4,21 +4,21 @@ release:
     owner: casualjim
     name: humanlog
   name_template: '{{.Tag}}'
-brew:
-  name: humanlog
-  github:
-    owner: oneconcern
-    name: homebrew-tap
-  download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
-  commit_author:
-    name: engineering
-    email: engineering@oneconcern.com
-  install: bin.install "humanlog"
+brews:
+  - name: humanlog
+    github:
+      owner: casualjim
+      name: homebrew-humanlog-cj
+    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
+    commit_author:
+      name: casualjim
+      email: ivan@flanders.co.nz
+    install: bin.install "humanlog"
 scoop:
   name: humanlog
   commit_author:
-    name: engineering
-    email: engineering@oneconcern.com
+    name: casualjim
+    email: ivan@flanders.co.nz
   url_template: https://github.com/casualjim/humanlog/releases/download/{{ .Tag }}/{{.ArtifactName }}
 builds:
 - goos:
@@ -36,31 +36,31 @@ builds:
   env:
   - CGO_ENABLED=0
   lang: go
-archive:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
-    }}v{{ .Arm }}{{ end }}'
-  replacements:
-    "386": i386
-    amd64: x86_64
-    darwin: Darwin
-    linux: Linux
-    windows: Windows
-  format: binary
-  files:
-  - licence*
-  - LICENCE*
-  - license*
-  - LICENSE*
-  - readme*
-  - README*
-  - changelog*
-  - CHANGELOG*
-nfpm:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
+archives:
+  - name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
+      }}v{{ .Arm }}{{ end }}'
+    replacements:
+      "386": i386
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    format: binary
+    files:
+    - licence*
+    - LICENCE*
+    - license*
+    - LICENSE*
+    - readme*
+    - README*
+    - changelog*
+    - CHANGELOG*
+nfpms:
+- name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
     }}v{{ .Arm }}{{ end }}'
   bindir: /usr/local/bin
-snapcraft:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
+snapcrafts:
+- name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
     }}v{{ .Arm }}{{ end }}'
 snapshot:
   name_template: '{{ .Tag }}-next'
@@ -74,8 +74,8 @@ changelog:
     - '^test:'
   sort: asc
 dist: dist
-sign:
-  cmd: gpg
+signs:
+- cmd: gpg
   args:
   - --output
   - $signature
