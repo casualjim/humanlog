@@ -203,15 +203,14 @@ func (h *JSONHandler) Prettify(skipUnchanged bool) []byte {
 		timeColor = h.Opts.TimeDarkBgColor
 	}
 
-
 	const verboseErrField = "errorVerbose"
 	stacktrace := h.Fields[verboseErrField]
 	delete(h.Fields, verboseErrField)
-	
+
 	const straceField = "stacktrace"
 	strace := h.Fields[straceField]
 	delete(h.Fields, straceField)
-		
+
 	if stacktrace == "" && strace != "" {
 		stacktrace = strace
 	}
