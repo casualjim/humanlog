@@ -39,52 +39,52 @@ func newApp() *cli.App {
 	skip := cli.StringSlice{}
 	keep := cli.StringSlice{}
 
-	skipFlag := cli.StringSliceFlag{
+	skipFlag := &cli.StringSliceFlag{
 		Name:  "skip",
 		Usage: "keys to skip when parsing a log entry",
 		Value: &skip,
 	}
 
-	keepFlag := cli.StringSliceFlag{
+	keepFlag := &cli.StringSliceFlag{
 		Name:  "keep",
 		Usage: "keys to keep when parsing a log entry",
 		Value: &keep,
 	}
 
-	sortLongest := cli.BoolTFlag{
+	sortLongest := &cli.BoolTFlag{
 		Name:  "sort-longest",
 		Usage: "sort by longest key after having sorted lexicographically",
 	}
 
-	skipUnchanged := cli.BoolTFlag{
+	skipUnchanged := &cli.BoolTFlag{
 		Name:  "skip-unchanged",
 		Usage: "skip keys that have the same value than the previous entry",
 	}
 
-	truncates := cli.BoolFlag{
+	truncates := &cli.BoolFlag{
 		Name:  "truncate",
 		Usage: "truncates values that are longer than --truncate-length",
 	}
 
-	truncateLength := cli.IntFlag{
+	truncateLength := &cli.IntFlag{
 		Name:  "truncate-length",
 		Usage: "truncate values that are longer than this length",
 		Value: humanlog.DefaultOptions.TruncateLength,
 	}
 
-	lightBg := cli.BoolFlag{
+	lightBg := &cli.BoolFlag{
 		Name:   "light-bg",
 		Usage:  "use black as the base foreground color (for terminals with light backgrounds)",
 		EnvVar: "HUMANLOG_LIGHT_BACKGROUND",
 	}
 
-	timeFormat := cli.StringFlag{
+	timeFormat := &cli.StringFlag{
 		Name:  "time-format",
 		Usage: "output time format, see https://golang.org/pkg/time/ for details",
 		Value: humanlog.DefaultOptions.TimeFormat,
 	}
 
-	ignoreInterrupts := cli.BoolFlag{
+	ignoreInterrupts := &cli.BoolFlag{
 		Name:  "ignore-interrupts, i",
 		Usage: "ignore interrupts",
 	}
