@@ -51,14 +51,16 @@ func newApp() *cli.App {
 		Value: &keep,
 	}
 
-	sortLongest := &cli.BoolTFlag{
-		Name:  "sort-longest",
-		Usage: "sort by longest key after having sorted lexicographically",
+	sortLongest := &cli.BoolFlag{
+		Name:        "sort-longest",
+		Usage:       "sort by longest key after having sorted lexicographically",
+		DefaultText: "true",
 	}
 
-	skipUnchanged := &cli.BoolTFlag{
-		Name:  "skip-unchanged",
-		Usage: "skip keys that have the same value than the previous entry",
+	skipUnchanged := &cli.BoolFlag{
+		Name:        "skip-unchanged",
+		Usage:       "skip keys that have the same value than the previous entry",
+		DefaultText: "true",
 	}
 
 	truncates := &cli.BoolFlag{
@@ -73,9 +75,9 @@ func newApp() *cli.App {
 	}
 
 	lightBg := &cli.BoolFlag{
-		Name:   "light-bg",
-		Usage:  "use black as the base foreground color (for terminals with light backgrounds)",
-		EnvVar: "HUMANLOG_LIGHT_BACKGROUND",
+		Name:    "light-bg",
+		Usage:   "use black as the base foreground color (for terminals with light backgrounds)",
+		EnvVars: []string{"HUMANLOG_LIGHT_BACKGROUND"},
 	}
 
 	timeFormat := &cli.StringFlag{
@@ -90,8 +92,9 @@ func newApp() *cli.App {
 	}
 
 	app := cli.NewApp()
-	app.Author = "Antoine Grondin"
-	app.Email = "antoine@digitalocean.com"
+	app.Authors = []*cli.Author{
+		{Name: "Antoine Grondin", Email: "antoine@digitalocean.com"},
+	}
 	app.Name = "humanlog"
 	app.Version = version
 	app.Usage = "reads structured logs from stdin, makes them pretty on stdout!"
@@ -101,20 +104,21 @@ func newApp() *cli.App {
 	app.Action = func(c *cli.Context) error {
 
 		opts := humanlog.DefaultOptions
-		opts.SortLongest = c.BoolT(sortLongest.Name)
-		opts.SkipUnchanged = c.BoolT(skipUnchanged.Name)
-		opts.Truncates = c.BoolT(truncates.Name)
+
+		opts.SortLongest = !c.Bool(sortLongest.Name)
+		opts.SkipUnchanged = !c.Bool(skipUnchanged.Name)
+		opts.Truncates = !c.Bool(truncates.Name)
 		opts.TruncateLength = c.Int(truncateLength.Name)
-		opts.LightBg = c.BoolT(lightBg.Name)
+		opts.LightBg = !c.Bool(lightBg.Name)
 		opts.TimeFormat = c.String(timeFormat.Name)
 
 		switch {
 		case c.IsSet(skipFlag.Name) && c.IsSet(keepFlag.Name):
 			fatalf(c, "can only use one of %q and %q", skipFlag.Name, keepFlag.Name)
 		case c.IsSet(skipFlag.Name):
-			opts.SetSkip(skip)
+			opts.SetSkip(skip.Value())
 		case c.IsSet(keepFlag.Name):
-			opts.SetKeep(keep)
+			opts.SetKeep(keep.Value())
 		}
 
 		if c.IsSet(strings.Split(ignoreInterrupts.Name, ",")[0]) {
