@@ -52,15 +52,13 @@ func newApp() *cli.App {
 	}
 
 	sortLongest := &cli.BoolFlag{
-		Name:        "sort-longest",
-		Usage:       "sort by longest key after having sorted lexicographically",
-		DefaultText: "true",
+		Name:  "sort-longest",
+		Usage: "sort by longest key after having sorted lexicographically",
 	}
 
 	skipUnchanged := &cli.BoolFlag{
-		Name:        "skip-unchanged",
-		Usage:       "skip keys that have the same value than the previous entry",
-		DefaultText: "true",
+		Name:  "skip-unchanged",
+		Usage: "skip keys that have the same value than the previous entry",
 	}
 
 	truncates := &cli.BoolFlag{
@@ -75,9 +73,9 @@ func newApp() *cli.App {
 	}
 
 	lightBg := &cli.BoolFlag{
-		Name:    "light-bg",
-		Usage:   "use black as the base foreground color (for terminals with light backgrounds)",
-		EnvVars: []string{"HUMANLOG_LIGHT_BACKGROUND"},
+		Name:   "light-bg",
+		Usage:  "use black as the base foreground color (for terminals with light backgrounds)",
+		EnvVar: "HUMANLOG_LIGHT_BACKGROUND",
 	}
 
 	timeFormat := &cli.StringFlag{
@@ -92,7 +90,7 @@ func newApp() *cli.App {
 	}
 
 	app := cli.NewApp()
-	app.Authors = []*cli.Author{
+	app.Authors = []cli.Author{
 		{Name: "Antoine Grondin", Email: "antoine@digitalocean.com"},
 	}
 	app.Name = "humanlog"
