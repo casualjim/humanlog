@@ -14,7 +14,7 @@ $ go get -u github.com/casualjim/humanlog/...
 ## On linux
 
 ```bash
-wget -qO- https://github.com/casualjim/humanlog/releases/download/0.2.1/humanlog_Linux_x86_64.tar.gz | tar xvz
+wget -qO- https://github.com/casualjim/humanlog/releases/download/0.3.6/humanlog_Linux_x86_64.tar.gz | tar xvz
 ```
 
 ## On OS X
