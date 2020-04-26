@@ -14,8 +14,8 @@ brews:
   - name: humanlog
     github:
       owner: casualjim
-      name: homebrew-humanlog-cj
-    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
+      name: homebrew-taps
+    # download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
     commit_author:
       name: casualjim
       email: ivan@flanders.co.nz
