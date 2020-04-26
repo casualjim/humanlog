@@ -11,9 +11,15 @@ build:
     - amd64
 
 brews:
-  - github:
-      owner: aybabtme
-      name: homebrew-tap
+  - name: humanlog
+    github:
+      owner: casualjim
+      name: homebrew-humanlog-cj
+    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
+    commit_author:
+      name: casualjim
+      email: ivan@flanders.co.nz
+    install: bin.install "humanlog"
 
 nfpms:
   - formats:
