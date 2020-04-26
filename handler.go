@@ -17,9 +17,9 @@ type Handler interface {
 var DefaultOptions = &HandlerOptions{
 	SortLongest:    true,
 	SkipUnchanged:  true,
-	Truncates:      true,
+	Truncates:      false,
 	LightBg:        false,
-	TruncateLength: 15,
+	TruncateLength: 100,
 	TimeFormat:     time.Stamp,
 
 	KeyColor:              color.New(color.FgYellow),
