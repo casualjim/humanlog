@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module github.com/aybabtme/humanlog
 
 go 1.15
@@ -5,6 +6,14 @@ go 1.15
 require (
 	github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
 	github.com/casualjim/humanlog v0.3.5
+=======
+module github.com/casualjim/humanlog
+
+go 1.14
+
+require (
+	github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+>>>>>>> 8c9a846 (update from upstream)
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/fatih/color v1.9.0
 	github.com/go-logfmt/logfmt v0.5.0
