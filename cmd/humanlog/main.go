@@ -105,7 +105,7 @@ func newApp() *cli.App {
 
 		opts.SortLongest = !c.Bool(sortLongest.Name)
 		opts.SkipUnchanged = !c.Bool(skipUnchanged.Name)
-		opts.Truncates = !c.Bool(truncates.Name)
+		opts.Truncates = c.Bool(truncates.Name)
 		opts.TruncateLength = c.Int(truncateLength.Name)
 		opts.LightBg = !c.Bool(lightBg.Name)
 		opts.TimeFormat = c.String(timeFormat.Name)
